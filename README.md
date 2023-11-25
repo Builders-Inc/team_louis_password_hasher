@@ -10,7 +10,7 @@ NOTE; This project is for practice.
 # PROJECT STRUCTURE
 
 hash
-|──.mvn
+```|──.mvn
 |── src
 │          ├── main
 │             └── java
@@ -34,7 +34,7 @@ hash
 ├── build/
 ├── pom.xml
 ├── README.md
-└── LICENSE
+└── LICENSE```
 
 # PROJECT IMPLEMENTATION
  
