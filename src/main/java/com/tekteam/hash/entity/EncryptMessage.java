@@ -17,4 +17,5 @@ public class EncryptMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String encrypted;
+    private String initializationVector;
 }
