@@ -11,6 +11,10 @@ NOTE; This project is for practice.
 # PROJECT STRUCTURE
 
 ```|──.mvn
+=======
+hash
+|──.mvn
+>>>>>>> bb6614b (Tcket)
 |── src
 │          ├── main
 │             └── java
@@ -32,4 +36,40 @@ NOTE; This project is for practice.
 ├── build/
 ├── pom.xml
 ├── README.md
+<<<<<<< HEAD
 └── LICENSE```
+=======
+└── LICENSE
+
+# PROJECT IMPLEMENTATION
+# Implementation 1: Encription of password
+ 
+public String encrypt(String word) throws Exception {
+            SecretKey secretKey = new SecretKeySpec(encryptionKey.getBytes(), ALGORITHM);
+            Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] encryptedBytes = cipher.doFinal(word.getBytes());
+            Base64.getEncoder().encodeToString(encryptedBytes);
+ 
+            String encryptedValue = String.valueOf(encryptedBytes);
+ 
+            EncryptMessage encryptedDataEntity = new EncryptMessage();
+            encryptedDataEntity.setEncrypted(encryptedValue);
+            repository.save(encryptedDataEntity);
+ 
+            return encryptedValue;
+        }
+ 
+# Implementation 2: Decription of password
+ 
+        public String decrypt(Long id) throws Exception {
+            EncryptMessage encryptedMessage = repository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Encrypted data not found"));
+            byte[] encrypted = encryptedMessage.getEncrypted().getBytes();
+            SecretKey secretKey = new SecretKeySpec(encryptionKey.getBytes(), ALGORITHM);
+            Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encrypted));
+            return new String(decryptedBytes);
+        }
+# CONTRIBUTION
